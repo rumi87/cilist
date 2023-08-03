@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mounting-pod
+  namespace: devops-rumi
+spec:
+  containers:
+  - name: mounting-pod
+    image: "rumi87/backend:2.0"
+    volumeMounts:
+    - name: foo
+      mountPath: "/etc/foo"
+      readOnly: true
+  volumes:
+  - name: foo
+    configMap:
+      name: cilist-configmap

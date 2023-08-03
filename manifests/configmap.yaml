@@ -1,0 +1,13 @@
+# ConfigMap untuk environment variables
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cilist-configmap
+  namespace: devops-rumi
+data:
+  API_URL: "http://api.rumi.local"
+  DATABASE_USERNAME=$DB_USER
+  DATABASE_PASSWORD=$DB_PASSWORD
+  DATABASE_DATABASE=$DB_NAME
+  DATABASE_HOST=$DB_HOST
+  DATABASE_PORT=$DB_PORT

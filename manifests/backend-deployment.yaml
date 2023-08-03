@@ -1,0 +1,47 @@
+# Deployment untuk backend (Express)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  namespace: devops-rumi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: rumi87/backend:2.0
+          ports:
+            - containerPort: 3000
+          env:
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: cilist-configmap
+                  key: DB1_HOST
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: cilist-configmap
+                  key: DB1_PORT
+            - name: DB_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: cilist-configmap
+                  key: DB1_USER
+            - name: DB_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: cilist-configmap
+                  key: DB1_PASSWORD
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: cilist-configmap
+                  key: DB1_NAME

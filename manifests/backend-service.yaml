@@ -1,0 +1,13 @@
+# Service untuk backend
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+  namespace: devops-rumi
+spec:
+  selector:
+    app: backend
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000

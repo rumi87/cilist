@@ -1,0 +1,22 @@
+# Deployment untuk frontend
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  namespace: devops-rumi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: rumi87/frontend:3.0
+          ports:
+            - containerPort: 80
+ 
