@@ -1,13 +1,16 @@
-# ConfigMap untuk environment variables
 apiVersion: v1
+data:
+  .env: |
+    # APP
+    BASE_URL_PORT=5000
+
+    # Database
+    DATABASE_USERNAME=admin
+    DATABASE_PASSWORD=59W5jcf4RrEVjfqDAY9xVA_2
+    DATABASE_DATABASE=dbcilist
+    DATABASE_HOST=db-cilist.cjzc7lrtq759.ap-southeast-1.rds.amazonaws.com
+    DATABASE_PORT=3306
 kind: ConfigMap
 metadata:
   name: cilist-configmap
-  namespace: devops-rumi
-data:
-  API_URL: "http://api.rumi.local"
-  DATABASE_USERNAME=$DB_USER
-  DATABASE_PASSWORD=$DB_PASSWORD
-  DATABASE_DATABASE=$DB_NAME
-  DATABASE_HOST=$DB_HOST
-  DATABASE_PORT=$DB_PORT
+  namespace: cilist

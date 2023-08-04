@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend-deployment
-  namespace: devops-rumi
+  namespace: cilist
 spec:
   replicas: 1
   selector:
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: rumi87/frontend:3.0
+          image: rumi87/frontend:4.0
           ports:
-            - containerPort: 80
+            - containerPort: 3000
  
