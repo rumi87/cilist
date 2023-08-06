@@ -9,6 +9,25 @@ pipeline {
         sh 'echo GIT_COMMIT_SHORT=$(echo $GIT_COMMIT_SHORT) > .env-commit'
       }
     }
+    stage('Build backend') {
+     steps {
+       dir('backend') {
+        sh 'docker build . -t cilist-pipeline-be:$GIT_COMMIT_SHORT'
+        sh 'docker tag cilist-pipeline-be:$GIT_COMMIT_SHORT rumi87/cilist-pipeline-be:$GIT_COMMIT_SHORT'
+        sh 'docker push rumi87/cilist-pipeline-be:$GIT_COMMIT_SHORT'
+       }
+     }
+   }
+
+   stage('Build frontend') {
+     steps {
+       dir('frontend') {
+        sh 'docker build . -t cilist-pipeline-fe:$GIT_COMMIT_SHORT'
+        sh 'docker tag cilist-pipeline-fe:$GIT_COMMIT_SHORT rumi87/cilist-pipeline-fe:$GIT_COMMIT_SHORT'
+        sh 'docker push rumi87/cilist-pipeline-fe:$GIT_COMMIT_SHORT'
+       }
+     }
+   }
     stage('Build') { 
       steps {
         sh 'docker build . -t cilist-pipeline-db:$GIT_COMMIT_SHORT'
