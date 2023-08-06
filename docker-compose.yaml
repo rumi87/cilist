@@ -6,7 +6,7 @@ services:
     image: rumi87/cilist-db:${GIT_COMMIT_SHORT}
   
   backend:
-    image: rumi/cilist-db:${GIT_COMMIT_SHORT}
+    image: rumi/cilist-be:${GIT_COMMIT_SHORT}
     ports:
       - "5000:5000"
     depends_on:
