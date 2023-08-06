@@ -12,9 +12,9 @@ pipeline {
     stage('Build backend') {
      steps {
        dir('backend') {
-        sh 'docker build . -t cilist-pipeline-be:$GIT_COMMIT_SHORT'
-        sh 'docker tag cilist-pipeline-be:$GIT_COMMIT_SHORT rumi87/cilist-pipeline-be:$GIT_COMMIT_SHORT'
-        sh 'docker push rumi87/cilist-pipeline-be:$GIT_COMMIT_SHORT'
+        sh 'docker build . -t cilist-be:$GIT_COMMIT_SHORT'
+        sh 'docker tag cilist-be:$GIT_COMMIT_SHORT rumi87/cilist-be:$GIT_COMMIT_SHORT'
+        sh 'docker push rumi87/cilist-be:$GIT_COMMIT_SHORT'
        }
      }
    }
@@ -22,16 +22,16 @@ pipeline {
    stage('Build frontend') {
      steps {
        dir('frontend') {
-        sh 'docker build . -t cilist-pipeline-fe:$GIT_COMMIT_SHORT'
-        sh 'docker tag cilist-pipeline-fe:$GIT_COMMIT_SHORT rumi87/cilist-pipeline-fe:$GIT_COMMIT_SHORT'
-        sh 'docker push rumi87/cilist-pipeline-fe:$GIT_COMMIT_SHORT'
+        sh 'docker build . -t cilist-fe:$GIT_COMMIT_SHORT'
+        sh 'docker tag cilist-fe:$GIT_COMMIT_SHORT rumi87/cilist-fe:$GIT_COMMIT_SHORT'
+        sh 'docker push rumi87/cilist-fe:$GIT_COMMIT_SHORT'
        }
      }
    }
     stage('Build') { 
       steps {
-        sh 'docker build . -t cilist-pipeline-db:$GIT_COMMIT_SHORT'
-        sh 'docker push rumi87/cilist-pipeline-db:$GIT_COMMIT_SHORT'
+        sh 'docker build . -t cilist-db:$GIT_COMMIT_SHORT'
+        sh 'docker push rumi87/cilist-db:$GIT_COMMIT_SHORT'
       }
     }
     stage('Deploy to remote server') {
