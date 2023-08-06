@@ -13,7 +13,6 @@ services:
       - database
     environment:
       - BASE_URL_PORT=5000
-      - MYSQL_ROOT_PASSWORD=s3k0l4hd3v0p5
       - DATABASE_USERNAME=admin
       - DATABASE_PASSWORD=59W5jcf4RrEVjfqDAY9xVA_2
       - DATABASE_DATABASE=dbcilist
